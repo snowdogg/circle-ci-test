@@ -7,9 +7,23 @@ jobs:
       - checkout
       - run: npm install
       - run: npm test
+  build-and-push:
+    executor: docker/docker
+    steps:
+      - setup_remote_docker
+      - checkout
+      - docker/check
+      - docker/build:
+          image: snowdogg/artgenerator
+          tag: "latest,$CIRCLE_SHA1"
+      - docker/push:
+          image: snowdogg/artgenerator
+          tag: "latest,$CIRCLE_SHA1"
 workflows:
   version: 2
   test:
     jobs:
       - test
-
+      - build-and-push:
+        requires:
+          -test
