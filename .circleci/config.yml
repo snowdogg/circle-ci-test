@@ -26,4 +26,4 @@ workflows:
       - test
       - build-and-push:
           requires:
-            -test
+            - test
