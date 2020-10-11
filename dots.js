@@ -15,11 +15,11 @@ var color = 0;
 var canvasSize = 360;
 var a = 2;
 var scaley = 1; ///THIS IS IMPORTANT
-                  ///CHANGE THIS VALUE TO CHANGE THE WHOLE PROGRAM
+///CHANGE THIS VALUE TO CHANGE THE WHOLE PROGRAM
 
 
 
-$(function () {
+$(function() {
 
     dotArray = new Array(8);
     for (var i = 0; i < dotArray.length; i++) {
@@ -64,7 +64,7 @@ $(function () {
     //        };
     //    };
 
-    setTimeout(function () {
+    setTimeout(function() {
         console.log("Ran after " + (new Date().getSeconds()) + " seconds");
         drawGame();
     }, 200);
@@ -76,7 +76,7 @@ $(function () {
 
 
 
-    document.getElementById("dotView").addEventListener("mousemove", function () {
+    document.getElementById("dotView").addEventListener("mousemove", function() {
         if (mouseDown) {
             var canvas = document.getElementById("dotView");
             var context = canvas.getContext("2d");
@@ -95,11 +95,11 @@ $(function () {
     }, false);
 
 
-    document.getElementById("dotView").addEventListener("mousedown", function () {
+    document.getElementById("dotView").addEventListener("mousedown", function() {
         mouseDown = 1
     }, false);
 
-    document.getElementById("dotView").addEventListener("mouseup", function () {
+    document.getElementById("dotView").addEventListener("mouseup", function() {
         mouseDown = 0
     }, false);
     //    document.getElementById("dotView").addEventListener("mousedown", leftClick, false);
@@ -169,11 +169,11 @@ function rightClick() {
 
 function drawGame() {
 
-        $("#lockscreen").css("width", "100%");
-        $("#lockscreen").css("height", "100%");
-        $("#lockscreen").css("z-index", "1000");
-        //or dynamically generate z-index value
-        $("#lockscreen").fadeIn();
+    $("#lockscreen").css("width", "100%");
+    $("#lockscreen").css("height", "100%");
+    $("#lockscreen").css("z-index", "1000");
+    //or dynamically generate z-index value
+    $("#lockscreen").fadeIn();
     sizeMod = .125;
     randomize();
     moreDots();
@@ -195,11 +195,11 @@ function draw() {
     var canvas = document.getElementById("dotView")
     var context = canvas.getContext("2d");
 
-//    if (flag1)
-//        {
-//            context.strokeText("7",240,240);
-//            return;
-//        }
+    //    if (flag1)
+    //        {
+    //            context.strokeText("7",240,240);
+    //            return;
+    //        }
 
     context.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -227,8 +227,7 @@ function draw() {
                 } else {
                     drawBlackDot(i, j, (.1 * randomQuad() + .75));
                 }
-            }
-            else if (dotY != 0 && dotArray[dotX][dotY - 1] === 0) {
+            } else if (dotY != 0 && dotArray[dotX][dotY - 1] === 0) {
                 if (randomQuad() === 3) {
                     drawBlackSquare(i, j, 1);
                 } else {
@@ -488,9 +487,9 @@ function drawBlackDot(i, j, z) {
         sq = blackDot;
     }
     rando *= scaley;
-//    rando *= ((randomQuad()+1)*scaley);
+    //    rando *= ((randomQuad()+1)*scaley);
 
-    context.drawImage(sq, i + random , j + random , w * rando, h * rando);
+    context.drawImage(sq, i + random, j + random, w * rando, h * rando);
 }
 
 function drawBlackSquare(i, j, z) {
@@ -507,7 +506,7 @@ function drawBlackSquare(i, j, z) {
         rando *= z;
     }
     var sq;
-   var r = randomOct();
+    var r = randomOct();
     if (r === 3 || r === 4 || r === 5 || r === 6) {
         sq = new Image();
         sq = blackSquare1;
@@ -519,9 +518,9 @@ function drawBlackSquare(i, j, z) {
     var w = blackSquare.width * sizeMod;
     var h = blackSquare.height * sizeMod;
 
-//    rando *= ((randomQuad()+1)*scaley);
-     rando *= scaley;
-    context.drawImage(sq, i + random , j + random, w * rando, h * rando);
+    //    rando *= ((randomQuad()+1)*scaley);
+    rando *= scaley;
+    context.drawImage(sq, i + random, j + random, w * rando, h * rando);
 }
 
 //function drawYellowSquare(i, j) {
@@ -543,6 +542,7 @@ function drawBlackSquare(i, j, z) {
 //}
 
 
+
 function randomSize() {
     var rando = randomQuad();
 
@@ -557,9 +557,10 @@ function randomSize() {
     }
 }
 
-function adjust(slidey)
-{
+function adjust(slidey) {
 
-    scaley = slidey*.01;
+    scaley = slidey * .01;
     draw();
 }
+
+module.exports = randomSize();
