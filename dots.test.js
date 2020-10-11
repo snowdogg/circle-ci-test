@@ -26,8 +26,8 @@ expect.extend({
 });
 
 
-test('randomizes a 2 decimal number between 0 and 1', sumTest);
+test('randomizes a 2 decimal number between 0 and 1', randomNumberTest);
 
-function sumTest() {
+function randomNumberTest() {
     expect(randomSize).toBeWithinRange(0, 1);
 }
