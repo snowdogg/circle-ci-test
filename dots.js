@@ -5,7 +5,7 @@ var blackSquare; // black square image
 var blackDot1;
 var blackSquare1;
 var dotX; // x coordinate
-var dotY; // y coordinate 
+var dotY; // y coordinate
 var dotArray; // 2d array of dot values
 var sizeMod; // changes size of dots
 var mouseDown = 0;
@@ -14,7 +14,7 @@ var mostRecentY;
 var color = 0;
 var canvasSize = 360;
 var a = 2;
-var scaley = 1; ///THIS IS IMPORTANT 
+var scaley = 1; ///THIS IS IMPORTANT
                   ///CHANGE THIS VALUE TO CHANGE THE WHOLE PROGRAM
 
 
@@ -26,38 +26,38 @@ $(function () {
         dotArray[i] = new Array(8);
     }
     blackSquare1 = new Image();
-    blackSquare1.src = "blackSquare1.png";
+    blackSquare1.src = "assets/blackSquare1.png";
     blackDot1 = new Image();
-    blackDot1.src = "blackDot1.png";
+    blackDot1.src = "assets/blackDot1.png";
     yellowSquare = new Image();
-    yellowSquare.src = "yellowSquare.png";
+    yellowSquare.src = "assets/yellowSquare.png";
     blackSquare = new Image();
-    blackSquare.src = "blackSquare.png";
+    blackSquare.src = "assets/blackSquare.png";
     yellowDot = new Image();
-    yellowDot.src = "yellowDot.png";
+    yellowDot.src = "assets/yellowDot.png";
     blackDot = new Image();
-    blackDot.src = "blackDot.png";
+    blackDot.src = "assets/blackDot.png";
 
 
-    //    
+    //
     //    yellowDot.onload = function () {
     //        blackDot.onload = function () {
     //            drawGame();
     //        };
     //    };
-    //    
+    //
     //    blackDot.onload = function () {
     //        yellowDot.onload= function () {
     //            drawGame();
     //        };
     //    };
-    //    
+    //
     //    yellowSquare.onload = function () {
     //        blackSquare.onload = function() {
     //            drawGame();
     //        };
     //    };
-    //    
+    //
     //    blackSquare.onload = function () {
     //        yellowSquare.onload = function() {
     //            drawGame();
@@ -107,7 +107,7 @@ $(function () {
 
 
 
-}); //end of onready 
+}); //end of onready
 
 
 
@@ -141,7 +141,7 @@ function leftClick() {
     dotArray[x][y] = color;
     draw();
 
-    //    
+    //
     //    if (dotArray[x][y] === 1) {
     //        dotArray[x][y] = 0;
     //        draw();
@@ -183,7 +183,7 @@ function drawGame() {
     moreDots();
     randomize();
     adjust(75);
-   
+
 
 
 }
@@ -200,7 +200,7 @@ function draw() {
 //            context.strokeText("7",240,240);
 //            return;
 //        }
-    
+
     context.clearRect(0, 0, canvas.width, canvas.height);
 
     for (i = 0; i < canvasSize; i + 0) {
@@ -227,7 +227,7 @@ function draw() {
                 } else {
                     drawBlackDot(i, j, (.1 * randomQuad() + .75));
                 }
-            } 
+            }
             else if (dotY != 0 && dotArray[dotX][dotY - 1] === 0) {
                 if (randomQuad() === 3) {
                     drawBlackSquare(i, j, 1);
@@ -243,10 +243,10 @@ function draw() {
             }
 
 
-            //            
+            //
             //            if (dotArray[dotX][dotY]) {
             //                drawBlackDot(i, j, 1);
-            //            } 
+            //            }
             //            else {
             //                    drawBlackSquare(i, j, 1);
             //                }
@@ -489,7 +489,7 @@ function drawBlackDot(i, j, z) {
     }
     rando *= scaley;
 //    rando *= ((randomQuad()+1)*scaley);
-    
+
     context.drawImage(sq, i + random , j + random , w * rando, h * rando);
 }
 
@@ -515,10 +515,10 @@ function drawBlackSquare(i, j, z) {
         sq = new Image();
         sq = blackSquare;
     }
-    
+
     var w = blackSquare.width * sizeMod;
     var h = blackSquare.height * sizeMod;
-    
+
 //    rando *= ((randomQuad()+1)*scaley);
      rando *= scaley;
     context.drawImage(sq, i + random , j + random, w * rando, h * rando);
@@ -557,10 +557,9 @@ function randomSize() {
     }
 }
 
-function adjust(slidey) 
+function adjust(slidey)
 {
- 
+
     scaley = slidey*.01;
     draw();
 }
-
