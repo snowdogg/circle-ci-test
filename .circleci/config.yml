@@ -25,9 +25,11 @@ jobs:
           tag: "latest,$CIRCLE_SHA1"
   deploy:
     docker:
-      - image: fabfuel/ecs-deploy:1.7.1
+      - image: circleci/python:3.7
     steps:
       - checkout
+      - run:
+          command: pip install ecs-deploy
       - run:
           command: ecs deploy $ECS_CLUSTER_NAME $ECS_SERVICE --image website-service snowdogg/artgenerator:$CIRCLE_SHA1 --region $AWS_REGION
 workflows:
