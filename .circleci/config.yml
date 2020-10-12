@@ -13,7 +13,7 @@ jobs:
     executor: docker/docker
     steps:
       - setup_remote_docker:
-        version: 19.03.8
+          version: 19.03.8
       - checkout
       - docker/check
       - docker/build:
