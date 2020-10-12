@@ -23,13 +23,13 @@ jobs:
       - docker/push:
           image: snowdogg/artgenerator
           tag: "latest,$CIRCLE_SHA1"
-          deploy:
-            docker:
-              - image: fabfuel/ecs-deploy:1.7.1
-            steps:
-              - checkout
-              - run:
-                  command: ecs deploy $ECS_CLUSTER_NAME $ECS_SERVICE --image website-service snowdogg/artgenerator:$CIRCLE_SHA1 --region $AWS_REGION
+  deploy:
+    docker:
+      - image: fabfuel/ecs-deploy:1.7.1
+    steps:
+      - checkout
+      - run:
+          command: ecs deploy $ECS_CLUSTER_NAME $ECS_SERVICE --image website-service snowdogg/artgenerator:$CIRCLE_SHA1 --region $AWS_REGION
 workflows:
   version: 2
   test-build-push-deploy:
