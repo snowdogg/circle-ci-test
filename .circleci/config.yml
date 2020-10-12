@@ -1,6 +1,7 @@
 version: 2.1
 orbs: 
   docker: circleci/docker@1.4.0
+  aws-ecs: circleci/aws-ecs
 jobs:
   test:
     docker:
@@ -9,6 +10,7 @@ jobs:
       - checkout
       - run: npm install
       - run: npm test
+      - run: echo $CIRCLE_BRANCH
   build-and-push:
     executor: docker/docker
     steps:
@@ -22,11 +24,18 @@ jobs:
       - docker/push:
           image: snowdogg/artgenerator
           tag: "latest,$CIRCLE_SHA1"
+  # deploy: 
+  #   aws-ecs/depolo
+  #     aws-region: 
+
 workflows:
   version: 2
   test-build-push-deploy:
     jobs:
       - test
       - build-and-push:
+          requires:
+            - test
+      - deploy
           requires:
             - test
