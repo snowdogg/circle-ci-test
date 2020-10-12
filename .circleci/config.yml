@@ -1,7 +1,7 @@
 version: 2.1
 orbs: 
   docker: circleci/docker@1.4.0
-  aws-ecs: circleci/aws-ecs
+  aws-ecs: circleci/aws-ecs@1.3.0
 jobs:
   test:
     docker:
@@ -10,7 +10,7 @@ jobs:
       - checkout
       - run: npm install
       - run: npm test
-      - run: echo "$CIRCLE_BRANCH"
+      - run: echo $CIRCLE_BRANCH
   build-and-push:
     executor: docker/docker
     steps:
