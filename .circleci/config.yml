@@ -1,7 +1,6 @@
 version: 2.1
 orbs: 
   docker: circleci/docker@1.4.0
-  aws-ecs: circleci/aws-ecs@1.3.0
 jobs:
   test:
     docker:
@@ -24,10 +23,13 @@ jobs:
       - docker/push:
           image: snowdogg/artgenerator
           tag: "latest,$CIRCLE_SHA1"
-  # deploy: 
-  #   aws-ecs/depolo
-  #     aws-region: 
-
+          deploy:
+            docker:
+              - image: fabfuel/ecs-deploy:1.7.1
+            steps:
+              - checkout
+              - run:
+                  command: ecs deploy $ECS_CLUSTER_NAME $ECS_SERVICE --image website-service snowdogg/artgenerator:$CIRCLE_SHA1 --region $AWS_REGION
 workflows:
   version: 2
   test-build-push-deploy:
@@ -36,6 +38,7 @@ workflows:
       - build-and-push:
           requires:
             - test
-      # - deploy
-      #     requires:
-      #       - test
+      - deploy:
+          requires:
+            - test
+            - build-and-push
