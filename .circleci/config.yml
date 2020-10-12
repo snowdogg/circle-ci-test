@@ -10,7 +10,7 @@ jobs:
       - checkout
       - run: npm install
       - run: npm test
-      - run: echo $CIRCLE_BRANCH
+      - run: echo "$CIRCLE_BRANCH"
   build-and-push:
     executor: docker/docker
     steps:
