@@ -1,6 +1,6 @@
 version: 2.1
 orbs: 
-  docker: circleci/docker:19.03.8
+  docker: circleci/docker@1.4.0
 jobs:
   test:
     docker:
