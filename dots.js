@@ -14,7 +14,7 @@ var mostRecentY;
 var color = 0;
 var canvasSize = 360;
 var a = 2;
-var scaley = 1; ///THIS IS IMPORTANT
+var scaley = 2; ///THIS IS IMPORTANT
 ///CHANGE THIS VALUE TO CHANGE THE WHOLE PROGRAM
 
 
