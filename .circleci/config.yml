@@ -11,8 +11,12 @@ jobs:
       - run: npm test
   build-and-push:
     executor: docker/docker
+    auth:
+      username: snowdogg
+      password: $DOCKERHUB_PASSWORD
     steps:
       - setup_remote_docker
+        version: 19.03.8
       - checkout
       - docker/check
       - docker/build:
