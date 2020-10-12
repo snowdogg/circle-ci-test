@@ -12,8 +12,8 @@ jobs:
   build-and-push:
     executor: docker/docker
     steps:
-      - setup_remote_docker
-          version: 19.03.8
+      - setup_remote_docker:
+        version: 19.03.8
       - checkout
       - docker/check
       - docker/build:
@@ -24,7 +24,7 @@ jobs:
           tag: "latest,$CIRCLE_SHA1"
 workflows:
   version: 2
-  test:
+  test-build-push-deploy:
     jobs:
       - test
       - build-and-push:
