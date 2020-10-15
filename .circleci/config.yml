@@ -30,7 +30,7 @@ jobs:
       - run:
           command: pip install ecs-deploy
       - run:
-          command: ecs deploy $ECS_CLUSTER_NAME $ECS_SERVICE --image website-service snowdogg/artgenerator:$CIRCLE_SHA1 --region $AWS_REGION
+          command: ecs deploy $ECS_CLUSTER_NAME $ECS_SERVICE --image website-service snowdogg/artgenerator:$CIRCLE_SHA1 --timeout 30000 --ignore-warnings --region $AWS_REGION
 workflows:
   version: 2
   test-build-push-deploy:
