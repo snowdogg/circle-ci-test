@@ -6,4 +6,5 @@ ADD final.css /html
 ADD dots.js /html
 ADD jquery-3.4.1.min.js /html
 ENTRYPOINT python -m http.server 80
+CMD --bind andreas.training.trambo.cloud
 
