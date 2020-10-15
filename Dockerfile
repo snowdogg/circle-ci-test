@@ -5,4 +5,4 @@ COPY ./assets /html/assets
 COPY final.css /html
 COPY dots.js /html
 COPY jquery-3.4.1.min.js /html
-ENTRYPOINT python -m http.server 80
+ENTRYPOINT python -m http.server 80 -d /html
