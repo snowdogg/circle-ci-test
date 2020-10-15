@@ -1,8 +1,9 @@
 FROM python:alpine
 WORKDIR /html
 ADD index.html /html
-COPY ./assets /html
-COPY final.css /html
-COPY dots.js /html
-COPY jquery-3.4.1.min.js /html
+ADD ./assets /html/assets
+ADD final.css /html
+ADD dots.js /html
+ADD jquery-3.4.1.min.js /html
 ENTRYPOINT python -m http.server 80
+
